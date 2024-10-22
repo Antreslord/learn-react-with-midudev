@@ -6,8 +6,8 @@ API:
 - Imagen random formato JSON: `https://cataas.com/cat/says/${firstWord}?fontSize=50&fontColor=red&json=true`
 
 Objetivos:
-- Recupera un hecho aleatorio de gato de la primera API.
-- Recuperar la primera palabra del hecho.
-- Muestra una imagen de un gato con la primera palabra
+* Recupera un hecho aleatorio de gato de la primera API.
+* Recuperar la primera palabra del hecho.
+* Muestra una imagen de un gato con la primera palabra
 
  
