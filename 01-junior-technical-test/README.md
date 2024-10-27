@@ -10,4 +10,15 @@ Objetivos:
 * Recuperar la primera palabra del hecho.
 * Muestra una imagen de un gato con la primera palabra
 
- 
+# Testing - Basico
+- Instalar en el proyecto: *npm init playwright@latest*
+    - elegir: JS o TS
+    - elegir: test
+    - elegir: false
+    - elegir: true
+    - elegir: false
+
+
+# Ejecutar testting
+- *npx playwright test*
+- cambiar el formato del archivo playwright.config. (js) -> (cjs)
