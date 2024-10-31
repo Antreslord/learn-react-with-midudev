@@ -1,7 +1,10 @@
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import './App.css'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
+import debounce from 'just-debounce-it'
+//import { useDebouncedCallback } from 'use-debounce'
+
 
 
 function useSearch () {
@@ -37,25 +40,47 @@ function useSearch () {
   return { search, setSearch, error }
 }
 
-
 function App() {
+
+  // ordenar las peliculas por año de lanzamiento
+  const [sort, setSort] = useState(false)
 
   // custom hook <== hooks/useSearch
   const { search, setSearch, error } = useSearch()
   
   // custom hook <== hooks/useMovies
-  const { movies, getMovies } = useMovies({ search })
+  const { movies, getMovies, loading } = useMovies({ search, sort })
+  
+  // implementando el debounce
+  const debounceGetMovies = useCallback(
+    debounce(search => {
+      console.log('search', search)
+      getMovies({ search })
+      setSearch('')
+    }, 3000)
+    , []  // <== aqui vendrian las dependencias
+  ) 
+
+  // const debounceGetMovies = useDebouncedCallback(search => {
+  //   console.log('search', search)
+  //   getMovies({ search })
+  //   setSearch('')
+  // },3000)
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    getMovies()
+    getMovies({search})
     setSearch('')
   }
 
+  const handleSort = () => {
+    setSort(!sort)
+  }
+
   const handleChange = (e) => {
-    //const newQuery = e.target.value
-    //if(newQuery.startsWith(' ')) return //Evalua si empieza con un espacio corta el flujo
-    setSearch(e.target.value)
+    const newSearch = e.target.value
+    setSearch(newSearch)
+    debounceGetMovies(newSearch)
   }
 
   
@@ -74,6 +99,7 @@ function App() {
               type="text"
               placeholder="Avenger, Star Wars, The Matrix, ..."
             />
+            <input type="checkbox" onChange={handleSort} checked={sort} />
             <button type="submit">Search</button>
           </div>
         </form>
@@ -83,7 +109,9 @@ function App() {
       </header>
       
       <main className='main' >
-        <Movies movies={movies}  />
+        {
+          loading ? <p>Cargando....</p> : <Movies movies={movies}  />
+        }
       </main>
     
     </div>
