@@ -1,0 +1,39 @@
+.products{   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.products ul {
+    display: grid;
+    width: 100%;
+
+    /* IMPORTANT Grid-Responsive */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.products li {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 4px;
+    background-color: #111;
+    color: #ffff;
+    padding: 1rem;
+}
+
+.products p{
+    font-size: 1rem;
+    opacity: .9;
+}
+
+.products img {
+    border-radius: 4px;
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    object-fit: cover;
+    background: #fff;
+}

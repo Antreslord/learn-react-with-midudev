@@ -16,11 +16,11 @@ Crea una aplicacion para buscar peliculas
 
 * Necesita mostrar un input para buscar la película y un boton para buscar
 * Lista de películas encontradas y muestra el Título, Año y Poster
-* Haz que las películas se muestren en un grid responsive **(grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));)**
+* Haz que las películas se muestren en un grid responsive `**(grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));)**`
 
 ## Primera iteración 
 
-* Evitar que se haga la misma búsqueda dos veces seguidas (**useRef()**)
+* Evitar que se haga la misma búsqueda dos veces seguidas `(**useRef()**)`
 * Haz que la búsqueda se haga automáticamente al escribir 
 - Evita que se haga la búsqueda continuamente al escribir (debounce).
 
