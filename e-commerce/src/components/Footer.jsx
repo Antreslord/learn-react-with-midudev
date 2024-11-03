@@ -17,7 +17,9 @@ export function Footer() {
             }
 
             {
+                /*
                 JSON.stringify(cart, null, 2)
+                */
             }
 
             {

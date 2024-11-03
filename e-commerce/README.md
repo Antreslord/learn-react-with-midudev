@@ -26,6 +26,8 @@ Genera un identificador UNICO que siempre sera el mismo.
 
 ## useContext
 
+## useReducer
+
 ## JavaScript Methods
 1. **findIndex(element)** = Devuelve el primer elemento que cumpla la condición.
     - **Ej**:   `const array1 = [5, 12, 8, 130, 44];`
@@ -51,7 +53,6 @@ Genera un identificador UNICO que siempre sera el mismo.
                 `console.log(array.some(even));`
                 `// Expected output: true`
 
-    - **Execute**:  {const checkProductInCart = product => {
-                        return cart.some(item => item.id == product.id)
-                    }}
+    - **Execute**:  `const checkProductInCart =  product => {`
+                    `return cart.some(item => item.id == product.id)}`
      

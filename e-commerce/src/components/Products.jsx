@@ -28,15 +28,14 @@ export function Products( {products} ) {
                                 </p>
                             </div>
                             <div>
-                                <button style={ {backgroundColor: isProductInCart ? 'red' : '#09f'} } onClick={()=> isProductInCart 
-                                    ? removeFromCart(product)
-                                    : addToCart(product)}>
-                                    {
-                                        checkProductInCart 
-                                        ? <RemoveFromCartIcon />
-                                        : <AddToCartIcon />
-                                    }
+                                <button style={ {backgroundColor:'#09f'} } onClick={()=> addToCart(product)}>
+                                        <AddToCartIcon />
                                 </button>
+                                {
+                                    isProductInCart && <button style={{backgroundColor: 'red'}} onClick={()=> removeFromCart(product)} >
+                                        <RemoveFromCartIcon></RemoveFromCartIcon>
+                                    </button>
+                                }
                             </div>
                         </li>
                     )})

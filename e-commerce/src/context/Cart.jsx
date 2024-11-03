@@ -3,6 +3,13 @@ import { createContext, useState } from "react";
 // 1. Crear Contexto
 export const CartContext = createContext()
 
+/*
+const initialState = []
+const reducer = (state, action) => {
+
+}
+*/
+
 // 2. Crear el Provider
 export function CartProvider ({ children }) {
 
