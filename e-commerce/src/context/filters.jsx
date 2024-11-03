@@ -11,7 +11,7 @@ export function FiltersProvider ({ children }){
     // usar un estado para el contexto
     const [filters, setFilters]=useState({
         category: 'all',
-        minPrice: 0
+        minPrice: 600
     })
 
     return (
