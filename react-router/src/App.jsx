@@ -1,33 +1,28 @@
 import './App.css'
+import { Router } from './Router'
+import { lazy, Suspense } from 'react'
+import SearchPage from './pages/Search'
+import { Route } from './Route'
+const lazyHomePage = lazy(()=> import('./pages/Home'))
+const lazyAboutPage = lazy(()=> import('./pages/About'))
+const lazy404Page = lazy(()=> import('./pages/404'))
 
-function HomePage () {
-  return (
-    <>
-      <h2>Home</h2>
-      <p>Esta es una página de ejemplo para crear React Router desde cero</p>
-      <a href="/about">Ir sobre nosotros</a>
-    </>
-  )
-}
-
-function AboutPage () {
-  return (
-    <>
-      <h2>About us</h2>
-      <p>¡Hola! Me llamo Cristian y estoy creando un clon de React Router</p>
-      <a href="/home">Ir a Home</a>
-      <a href="/about">Ir sobre nosotros</a>
-    </>
-  )
-}
+const routes = [
+  { path: '/', Component: lazyHomePage },
+  { path: '/about', Component: lazyAboutPage },
+  { path: '/search/:query', Component: SearchPage }
+]
 
 function App() {
 
   return (
     <main>
-      <h1>React Router</h1>
-      <AboutPage />
-      <HomePage />
+      <Suspense fallback={<div>Loading ...</div>}>
+        <Router routes={routes} defaultComponent={lazy404Page}>
+          <Route path="/" Component={lazyHomePage}></Route>
+          <Route path="/about" Component={lazyAboutPage}></Route>
+        </Router>
+      </Suspense>
     </main>
   )
 }
